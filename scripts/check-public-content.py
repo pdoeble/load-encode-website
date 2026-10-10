@@ -255,6 +255,7 @@ class PageParser(HTMLParser):
         self._in_title = False
         self.has_viewport = False
         self.release_status = None
+        self.robots = ""
         self.h1 = 0
         self.ids: dict[str, int] = {}
         self.links: list[tuple[str, int]] = []
@@ -275,6 +276,8 @@ class PageParser(HTMLParser):
             self.has_viewport = True
         if tag == "meta" and a.get("name") == "release-status":
             self.release_status = (a.get("content") or "").strip().lower()
+        if tag == "meta" and (a.get("name") or "").lower() == "robots":
+            self.robots = (a.get("content") or "").lower()
         if tag == "h1":
             self.h1 += 1
         if "id" in a and a["id"]:
@@ -371,6 +374,11 @@ def check_html(rel: str, text: str, report: Report, release: bool) -> PageParser
         if target is not None and not target.exists():
             report.error(rel, f"Link-Ziel nicht gefunden: {href}", line)
     status = parser.release_status
+    noindex = "noindex" in parser.robots
+    if status == "draft" and not noindex:
+        report.error(rel, "Entwurf ohne meta robots noindex")
+    if status == "released" and noindex:
+        report.note(rel, "freigegebene Seite mit noindex; nur fuer eine Vorabseite gewollt")
     if status == "draft":
         if release:
             report.error(rel, "Seite ist als Entwurf markiert (meta release-status=draft)")
