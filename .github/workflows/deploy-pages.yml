@@ -1,0 +1,90 @@
+# Veröffentlicht den Inhalt von site/ auf GitHub Pages.
+#
+# Der Workflow startet nur manuell und nur, wenn alle Bedingungen erfüllt sind:
+#   1. Start von main,
+#   2. Repository-Variable PAGES_RELEASE_APPROVED steht auf "true",
+#   3. das Bestätigungsfeld enthält VEROEFFENTLICHEN,
+#   4. die Freigabeprüfung (Entwurfsmarker, Platzhalter, offene Angaben,
+#      Zugangsdaten, externe Ressourcen, Historie) ist fehlerfrei.
+# Ablauf und Checkliste: docs/deployment.md und docs/release-checklist.md.
+name: Deploy to GitHub Pages
+
+on:
+  workflow_dispatch:
+    inputs:
+      bestaetigung:
+        description: "Checkliste abgearbeitet? Zur Bestätigung VEROEFFENTLICHEN eingeben."
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+# Nur ein Deployment gleichzeitig; ein laufendes Deployment wird nicht abgebrochen.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Freigabe prüfen und Artefakt bauen
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Freigabebedingungen prüfen
+        env:
+          APPROVED: ${{ vars.PAGES_RELEASE_APPROVED }}
+          CONFIRM: ${{ inputs.bestaetigung }}
+          REF: ${{ github.ref }}
+        run: |
+          if [ "$REF" != "refs/heads/main" ]; then
+            echo "::error::Ein Deployment ist nur von main aus zulässig."
+            exit 1
+          fi
+          if [ "$APPROVED" != "true" ]; then
+            echo "::error::Die Repository-Variable PAGES_RELEASE_APPROVED steht nicht auf true."
+            exit 1
+          fi
+          if [ "$CONFIRM" != "VEROEFFENTLICHEN" ]; then
+            echo "::error::Die Bestätigung fehlt oder ist falsch geschrieben."
+            exit 1
+          fi
+
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Freigabeprüfung
+        run: python3 scripts/check-public-content.py --release --history
+
+      - name: Artefakt ausschließlich aus site/ zusammenstellen
+        run: |
+          rm -rf _site
+          cp -R site _site
+          find _site -name '.gitkeep' -type f -delete
+
+      - name: GitHub Pages konfigurieren
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+
+      - name: Artefakt hochladen
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: _site/
+
+  deploy:
+    name: Auf GitHub Pages veröffentlichen
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deployment
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

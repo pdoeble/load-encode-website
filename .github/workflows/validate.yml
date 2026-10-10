@@ -1,0 +1,41 @@
+# Prüft bei jedem Pull Request und jedem Push nach main, ob die Inhalte
+# veröffentlicht werden dürfen. Die vertrauliche Begriffsliste steht hier nicht
+# zur Verfügung; sie wird lokal vor jedem Push geprüft (scripts/hooks/pre-push).
+name: Validierung
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Inhalte und Struktur prüfen
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Arbeitsstand und Historie prüfen
+        run: python3 scripts/check-public-content.py --history
+
+      - name: Freigabestatus anzeigen (nur Information)
+        run: |
+          if python3 scripts/check-public-content.py --release > release-check.txt; then
+            echo "::notice::Freigabeprüfung bestanden."
+          else
+            echo "::notice::Freigabeprüfung nicht bestanden; ein Deployment wäre derzeit gesperrt."
+          fi
+          tail -n 1 release-check.txt
