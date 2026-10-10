@@ -28,6 +28,7 @@ der eigenen Domain und die Zugriffsrechte.
 | Merge-Methoden | nur Squash-Merge (Titel und Text aus dem Pull Request) | gesetzt |
 | Branch nach Merge löschen | an | gesetzt |
 | Actions | nur von GitHub bereitgestellte Actions | gesetzt |
+| Actions nur mit vollständiger Commit-SHA | Pflicht (`sha_pinning_required`) | gesetzt |
 | Standardrechte des Workflow-Tokens | nur lesen; keine Freigabe von Pull Requests durch Actions | gesetzt |
 | Dependabot-Sicherheitswarnungen | an | gesetzt |
 | Lizenz | keine | bewusst offen |
@@ -78,6 +79,13 @@ Der Regelsatz verlangt Pull Requests und die bestandene Prüfung „Inhalte und
 Struktur prüfen“. Die Zahl der Pflicht-Reviews steht auf null, solange nur eine
 Person Zugriff hat. Sobald eine zweite Person Administratorrechte hat, wird sie
 auf eins gesetzt.
+
+## Zugangsdaten für Pushes
+
+Wer Dateien unter `.github/workflows/` pusht, braucht ein Token mit dem Scope
+`workflow`. Für die GitHub-CLI lässt er sich mit
+`gh auth refresh -h github.com -s workflow` ergänzen; der Befehl öffnet eine
+Anmeldung im Browser.
 
 ## Zugriff
 
