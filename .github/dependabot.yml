@@ -1,0 +1,11 @@
+# Hält die gepinnten GitHub Actions aktuell. Dependabot öffnet dafür Pull Requests,
+# die wie jede andere Änderung geprüft werden.
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "Actions"

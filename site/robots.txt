@@ -1,0 +1,6 @@
+# robots.txt steuert nur das Verhalten gutwilliger Suchmaschinen.
+# Es schützt keine Inhalte: Was nicht öffentlich sein darf, gehört nicht in site/.
+User-agent: *
+Allow: /
+
+Sitemap: https://load-encode.de/sitemap.xml

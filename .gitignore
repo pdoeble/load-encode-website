@@ -1,0 +1,36 @@
+# Hinweis: Diese Datei verhindert nur versehentliches Einchecken von
+# Arbeitsartefakten. Vertrauliche Inhalte gehören nie in dieses Verzeichnis,
+# auch nicht als ignorierte Datei (siehe AGENTS.md, Abschnitt 2).
+
+# Betriebssystem und Editoren
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+.vscode/
+.idea/
+.obsidian/
+
+# Lokale Agenten- und Werkzeugeinstellungen
+.claude/settings.local.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Node (falls später ein Generator eingesetzt wird)
+node_modules/
+dist/
+.astro/
+
+# Lokale Build- und Prüfausgaben
+_site/
+_build/
+reports/
+*.log
+
+# Office-Sperrdateien
+~$*
