@@ -4,10 +4,13 @@
 
 Veröffentlicht wird ausschließlich der Inhalt von `site/`. Das Deployment
 startet nie automatisch, sondern nur manuell nach Abarbeitung der
-[Freigabe-Checkliste](release-checklist.md). Derzeit ist kein Deployment
-möglich: Das Repository ist privat, GitHub Pages ist im kostenlosen Tarif für
-private Repositories nicht verfügbar, und alle Seiten tragen den Status
-`draft`.
+[Freigabe-Checkliste](release-checklist.md).
+
+Derzeit ist kein Deployment möglich. GitHub Pages ist abgeschaltet, und alle
+Seiten tragen den Status `draft`, an dem die Freigabeprüfung scheitert. Das
+Repository selbst ist öffentlich: Die Beschränkung des Deployments auf `site/`
+schützt die übrigen Dateien und die Git-Historie nicht. Was im Repository
+liegt, ist veröffentlicht.
 
 ## Workflows
 
@@ -28,6 +31,12 @@ auf vollständige Commit-SHAs (Stand 10.10.2026):
 
 Dependabot schlägt Aktualisierungen monatlich per Pull Request vor.
 
+Das Prüfskript sichert diese Regeln bei jedem Lauf ab. Es meldet einen Fehler,
+wenn eine Action nicht auf eine vollständige Commit-SHA gepinnt ist, wenn ein
+anderer Workflow als `deploy-pages.yml` Pages-Actions verwendet, wenn
+`deploy-pages.yml` einen anderen Auslöser als `workflow_dispatch` hat, wenn die
+Freigabeprüfung fehlt oder wenn das Artefakt nicht aus `site/` gebaut wird.
+
 ## Sperren im Deployment-Workflow
 
 Der Workflow bricht ab, wenn eine der folgenden Bedingungen nicht erfüllt ist:
@@ -47,23 +56,25 @@ führendem Punkt standardmäßig weg. Soll später `site/.well-known/` ausgelief
 werden (etwa `security.txt`), braucht der Upload-Schritt
 `include-hidden-files: true`.
 
-Nach dem Öffentlichschalten kommt als fünfte Sperre die Umgebung
-`github-pages` mit einer benannten freigebenden Person hinzu (siehe
-[github-settings.md](github-settings.md)).
+Als fünfte Sperre verlangt die Umgebung `github-pages` die Freigabe des
+Deployments durch eine benannte Person und lässt nur `main` zu (siehe
+[github-settings.md](github-settings.md)). Ist GitHub Pages abgeschaltet,
+scheitert der Workflow außerdem am Schritt „GitHub Pages konfigurieren“.
 
-## Erstmalige Einrichtung von GitHub Pages
+## GitHub Pages einschalten
 
-Voraussetzung: Das Repository ist öffentlich (oder das Konto hat einen Tarif,
-der Pages für private Repositories erlaubt), und die Punkte „Einmalig vor der
-ersten Veröffentlichung“ der Checkliste sind erledigt.
+Voraussetzung: Die Punkte „Einmalig vor der ersten Veröffentlichung“ der
+Checkliste sind erledigt.
 
 1. Domain verifizieren, bevor sie irgendwo eingetragen wird
    ([dns-netcup.md](dns-netcup.md), Schritt 2).
 2. Settings → Pages → „Build and deployment“ → Source: **GitHub Actions**.
    Per CLI:
    `gh api -X POST repos/<eigentümer>/load-encode-website/pages -f build_type=workflow`
-3. Settings → Environments → `github-pages`: Bereitstellung nur von `main`,
-   Freigabe durch eine benannte Person.
+3. Settings → Environments → `github-pages` prüfen: Bereitstellung nur von
+   `main`, Freigabe durch eine benannte Person. Beides ist seit 10.10.2026
+   gesetzt; nach einer Übertragung des Repositorys muss es neu eingerichtet
+   werden.
 4. Custom Domain `load-encode.de` in den Pages-Einstellungen eintragen. Eine
    Datei `CNAME` im Repository ist beim Deployment über Actions weder nötig noch
    wirksam.
@@ -103,3 +114,18 @@ sind. Ob eine Projektpräsentation einer Hochschule mit Partnerakquise darunter
 fällt, ist vor der ersten Veröffentlichung zu entscheiden und zu dokumentieren
 (Checkliste, erster Abschnitt). Die Wahl von GitHub für den Quellcode hängt
 davon nicht ab; ein Wechsel des Hostings betrifft nur den Deployment-Workflow.
+
+## Verlauf
+
+Am 10.10.2026 wurde das Repository öffentlich geschaltet und GitHub Pages
+eingeschaltet. Mit dem ersten Pull Request kam der Vorlage-Workflow
+`static.yml` hinzu. Er veröffentlichte bei jedem Push auf `main` das gesamte
+Repository ohne Freigabeprüfung, und ein Durchlauf war erfolgreich. Damit
+waren die Entwurfsseiten unter `https://pdoeble.github.io/load-encode-website/`
+einige Stunden erreichbar.
+
+Noch am selben Tag wurde `static.yml` deaktiviert, GitHub Pages abgeschaltet
+und der Workflow durch `deploy-pages.yml` ersetzt. Die ausgelieferten Dateien
+waren dieselben, die im öffentlichen Repository ohnehin lesbar sind; vertrauliche
+Inhalte enthielt das Repository nach der Prüfung mit
+`scripts/check-public-content.py --history` nicht.

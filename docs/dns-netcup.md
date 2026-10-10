@@ -7,10 +7,16 @@ Vor der Umsetzung sind sie erneut zu prüfen.
 
 ## Stand
 
-Am 10.10.2026 war `load-encode.de` laut DENIC nicht registriert
-(`whois.denic.de`: „Status: free“; alle Abfragen lieferten NXDOMAIN). Nach der
-Registrierung legt netcup eine Standardzone an. Diese Zone wird vor jeder
-Änderung vollständig abgefragt und dokumentiert (Schritt 1).
+Die Domain `load-encode.de` wurde am 10.10.2026 bei netcup registriert. Am
+selben Abend um 23:17 Uhr kannte die Registry DENIC sie noch nicht (RDAP-Abfrage
+`https://rdap.denic.de/domain/load-encode.de`: „No such domain“; DNS-Abfragen
+lieferten NXDOMAIN). Ob die Registrierung abgeschlossen ist, zeigt das netcup
+Customer Control Panel unter „Domains“; die Gegenprobe ist dieselbe
+RDAP-Abfrage.
+
+Nach der Registrierung legt netcup eine Standardzone an. Diese Zone wird vor
+jeder Änderung vollständig abgefragt und dokumentiert (Schritt 1). Die DNS-
+Anbindung an GitHub Pages ist noch nicht eingerichtet.
 
 **Keine DNS-Änderung, solange keine Veröffentlichung freigegeben ist.** Die
 Domainverifizierung (Schritt 2) ist davon ausgenommen; sie macht nichts
