@@ -255,6 +255,7 @@ class PageParser(HTMLParser):
         self._in_title = False
         self.has_viewport = False
         self.release_status = None
+        self.robots = ""
         self.h1 = 0
         self.ids: dict[str, int] = {}
         self.links: list[tuple[str, int]] = []
@@ -275,6 +276,8 @@ class PageParser(HTMLParser):
             self.has_viewport = True
         if tag == "meta" and a.get("name") == "release-status":
             self.release_status = (a.get("content") or "").strip().lower()
+        if tag == "meta" and (a.get("name") or "").lower() == "robots":
+            self.robots = (a.get("content") or "").lower()
         if tag == "h1":
             self.h1 += 1
         if "id" in a and a["id"]:
@@ -371,6 +374,11 @@ def check_html(rel: str, text: str, report: Report, release: bool) -> PageParser
         if target is not None and not target.exists():
             report.error(rel, f"Link-Ziel nicht gefunden: {href}", line)
     status = parser.release_status
+    noindex = "noindex" in parser.robots
+    if status == "draft" and not noindex:
+        report.error(rel, "Entwurf ohne meta robots noindex")
+    if status == "released" and noindex:
+        report.note(rel, "freigegebene Seite mit noindex; nur fuer eine Vorabseite gewollt")
     if status == "draft":
         if release:
             report.error(rel, "Seite ist als Entwurf markiert (meta release-status=draft)")
@@ -449,6 +457,69 @@ def check_files(report: Report, denylist, release: bool) -> None:
                 report.error(SITE + legal, "Rechtliche Seite fehlt")
 
 
+WORKFLOW_DIR = ".github/workflows/"
+DEPLOY_WORKFLOW = WORKFLOW_DIR + "deploy-pages.yml"
+USES_PATTERN = re.compile(r"^\s*-?\s*uses:\s*([^\s#]+)", re.MULTILINE)
+PINNED_PATTERN = re.compile(r"@[0-9a-f]{40}$")
+PAGES_ACTIONS = ("actions/deploy-pages", "actions/upload-pages-artifact")
+
+
+def workflow_triggers(text: str) -> set[str]:
+    """Liefert die Ausloeser unter dem obersten on:-Schluessel (Block- oder Listenform)."""
+    lines = text.splitlines()
+    for i, line in enumerate(lines):
+        match = re.match(r"^(?:on|\"on\"|'on'):\s*(.*)$", line)
+        if not match:
+            continue
+        inline = match.group(1).split("#")[0].strip()
+        if inline:
+            return {t.strip(" []'\"") for t in inline.split(",") if t.strip(" []'\"")}
+        triggers = set()
+        for follow in lines[i + 1:]:
+            if follow.strip() == "" or follow.lstrip().startswith("#"):
+                continue
+            if not follow.startswith(" "):
+                break
+            key = re.match(r"^  (?:- )?([A-Za-z_]+)", follow)
+            if key:
+                triggers.add(key.group(1))
+        return triggers
+    return set()
+
+
+def check_workflows(report: Report) -> None:
+    """Workflows: Actions auf Commit-SHA, genau ein manuelles Pages-Deployment nur aus site/."""
+    directory = ROOT / WORKFLOW_DIR
+    if not directory.is_dir():
+        return
+    for path in sorted(directory.iterdir()):
+        if path.suffix.lower() not in {".yml", ".yaml"}:
+            continue
+        rel = WORKFLOW_DIR + path.name
+        text = read_text(path) or ""
+        for match in USES_PATTERN.finditer(text):
+            ref = match.group(1).strip("'\"")
+            if ref.startswith(("./", "docker://")):
+                continue
+            if not PINNED_PATTERN.search(ref):
+                report.error(rel, f"Action nicht auf vollstaendige Commit-SHA gepinnt: {ref}",
+                             line_of(text, match.start()))
+        if any(action in text for action in PAGES_ACTIONS) and rel != DEPLOY_WORKFLOW:
+            report.error(rel, "weiterer Workflow mit Pages-Deployment; zulaessig ist nur " + DEPLOY_WORKFLOW)
+    deploy = ROOT / DEPLOY_WORKFLOW
+    if deploy.is_file():
+        text = read_text(deploy) or ""
+        triggers = workflow_triggers(text)
+        if triggers != {"workflow_dispatch"}:
+            report.error(DEPLOY_WORKFLOW, f"Ausloeser muessen genau workflow_dispatch sein, gefunden: "
+                                          f"{', '.join(sorted(triggers)) or 'keine'}")
+        if "check-public-content.py --release" not in text:
+            report.error(DEPLOY_WORKFLOW, "Freigabepruefung (--release) fehlt")
+        artifact_path = re.search(r"^\s*path:\s*['\"]?_site/?['\"]?\s*$", text, re.MULTILINE)
+        if not artifact_path or "cp -R site _site" not in text:
+            report.error(DEPLOY_WORKFLOW, "Artefakt wird nicht ausschliesslich aus site/ gebaut")
+
+
 def check_history(report: Report, denylist) -> None:
     """Prueft alle Commits: hinzugefuegte Zeilen, Nachrichten und Autorenadressen."""
     try:
@@ -503,6 +574,7 @@ def main() -> int:
     report = Report()
     denylist = load_denylist(args.denylist)
     check_files(report, denylist, args.release)
+    check_workflows(report)
     if args.history:
         check_history(report, denylist)
 

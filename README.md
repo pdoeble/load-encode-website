@@ -11,6 +11,11 @@ not yet published.*
 
 ## Stand
 
+- Das Repository ist öffentlich. Alles, was hier liegt, einschließlich der
+  Git-Historie, ist veröffentlicht.
+- GitHub Pages ist abgeschaltet. Veröffentlicht wird nur über den manuell
+  gestarteten Workflow `deploy-pages.yml` nach Freigabe; siehe
+  [docs/deployment.md](docs/deployment.md).
 - Die Seiten in `site/` sind Gerüste ohne freigegebene Inhalte. Alle Seiten
   tragen den Freigabestatus `draft`; ein Deployment ist in diesem Zustand
   technisch gesperrt.

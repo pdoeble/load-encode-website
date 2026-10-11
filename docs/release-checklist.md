@@ -23,9 +23,12 @@ automatischer Test grün ist.
       aktuellen Begriffsliste fehlerfrei.
 - [ ] Eine zweite Person hat die Historie stichprobenartig gesichtet,
       insbesondere Commit-Nachrichten und gelöschte Dateien.
-- [ ] Erst danach wird das Repository öffentlich geschaltet und die
-      Einstellungen aus [github-settings.md](github-settings.md), Abschnitt
-      „Beim Öffentlichschalten“, werden gesetzt.
+- [x] Das Repository ist seit 10.10.2026 öffentlich, die Einstellungen stehen
+      in [github-settings.md](github-settings.md). Die Historie war an diesem
+      Tag mit Begriffsliste fehlerfrei; die beiden Punkte davor gelten für den
+      Stand vor der ersten Veröffentlichung der Website weiter.
+- [ ] GitHub Pages ist nach [deployment.md](deployment.md) wieder
+      eingeschaltet.
 - [ ] Die Domain ist bei GitHub verifiziert, bevor DNS-Einträge auf GitHub
       Pages zeigen ([dns-netcup.md](dns-netcup.md)).
 
@@ -58,6 +61,8 @@ automatischer Test grün ist.
 ### Ablauf
 
 - [ ] Alle Seiten tragen `release-status` `released`.
+- [ ] `meta robots noindex` ist entfernt, außer bei einer bewusst nicht
+      indexierten Vorabseite.
 - [ ] Der Pull Request mit der Freigabe ist von der verantwortlichen Person
       genehmigt und nach `main` zusammengeführt.
 - [ ] Die Repository-Variable `PAGES_RELEASE_APPROVED` steht auf `true`.
