@@ -7,8 +7,9 @@ Vor der Umsetzung sind sie erneut zu prüfen.
 
 ## Stand
 
-Die Domain `load-encode.de` wurde am 10.10.2026 bei netcup registriert. Am
-selben Abend um 23:17 Uhr kannte die Registry DENIC sie noch nicht (RDAP-Abfrage
+Die Domain `load-encode.de` wurde am 10.10.2026 bei netcup bestellt und wird
+voraussichtlich am 12.10.2026 aktiv. Am 10.10.2026 um 23:17 Uhr kannte die
+Registry DENIC sie noch nicht (RDAP-Abfrage
 `https://rdap.denic.de/domain/load-encode.de`: „No such domain“; DNS-Abfragen
 lieferten NXDOMAIN). Ob die Registrierung abgeschlossen ist, zeigt das netcup
 Customer Control Panel unter „Domains“; die Gegenprobe ist dieselbe
