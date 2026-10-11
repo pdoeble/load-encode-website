@@ -44,7 +44,8 @@
         "do_not_enforce_on_create": false,
         "required_status_checks": [
           {
-            "context": "Inhalte und Struktur prüfen"
+            "context": "Inhalte und Struktur prüfen",
+            "integration_id": 15368
           }
         ]
       }
