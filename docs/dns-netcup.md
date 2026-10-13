@@ -7,21 +7,13 @@ Vor der Umsetzung sind sie erneut zu prüfen.
 
 ## Stand
 
-Die Domain `load-encode.de` wurde am 10.10.2026 bei netcup bestellt und wird
-voraussichtlich am 12.10.2026 aktiv. Am 10.10.2026 um 23:17 Uhr kannte die
-Registry DENIC sie noch nicht (RDAP-Abfrage
-`https://rdap.denic.de/domain/load-encode.de`: „No such domain“; DNS-Abfragen
-lieferten NXDOMAIN). Ob die Registrierung abgeschlossen ist, zeigt das netcup
-Customer Control Panel unter „Domains“; die Gegenprobe ist dieselbe
-RDAP-Abfrage.
-
-Nach der Registrierung legt netcup eine Standardzone an. Diese Zone wird vor
-jeder Änderung vollständig abgefragt und dokumentiert (Schritt 1). Die DNS-
-Anbindung an GitHub Pages ist noch nicht eingerichtet.
-
-**Keine DNS-Änderung, solange keine Veröffentlichung freigegeben ist.** Die
-Domainverifizierung (Schritt 2) ist davon ausgenommen; sie macht nichts
-öffentlich und schützt die Domain vor Übernahme durch Dritte.
+Die Domain `load-encode.de` ist seit dem 13.10.2026 bei der DENIC aktiv
+(netcup-Nameserver, DNSSEC aus). Die Standardzone enthielt nur einen A-Eintrag
+der netcup-Parkseite und keine Mail-Einträge; der Ausgangsstand ist intern
+festgehalten (Schritt 1). Nach der Freigabe der Website am 13.10.2026 wurde die
+Domain in den Pages-Einstellungen eingetragen; die Zone wird nach Schritt 4
+umgestellt. Offen sind die Verifizierung der Domain (Schritt 2), „Enforce
+HTTPS“ (Schritt 5) und danach DNSSEC.
 
 ## Schritt 1: Bestehende Zone festhalten
 

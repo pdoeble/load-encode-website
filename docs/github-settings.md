@@ -89,12 +89,12 @@ Abschnitt „Verlauf“.
 
 | Einstellung | Wert |
 | --- | --- |
-| Pages | abgeschaltet bis zur Freigabe |
-| Quelle beim Wiedereinschalten | GitHub Actions |
-| eigene Domain | noch nicht eingetragen |
+| Pages | eingeschaltet seit 13.10.2026 |
+| Quelle | GitHub Actions |
+| eigene Domain | `load-encode.de`, eingetragen am 13.10.2026 |
 | Umgebung `github-pages` | Bereitstellung nur von `main`, Freigabe durch `pdoeble` |
 
-Wie Pages wieder eingeschaltet wird, steht in [deployment.md](deployment.md).
+Ablauf einer Veröffentlichung und Rücknahme: [deployment.md](deployment.md).
 
 ## Zugangsdaten für Pushes
 

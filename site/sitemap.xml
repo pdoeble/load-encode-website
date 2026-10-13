@@ -4,6 +4,9 @@
     <loc>https://load-encode.de/</loc>
   </url>
   <url>
+    <loc>https://load-encode.de/methodik.html</loc>
+  </url>
+  <url>
     <loc>https://load-encode.de/impressum.html</loc>
   </url>
   <url>
@@ -11,5 +14,8 @@
   </url>
   <url>
     <loc>https://load-encode.de/barrierefreiheit.html</loc>
+  </url>
+  <url>
+    <loc>https://load-encode.de/leichte_sprache.html</loc>
   </url>
 </urlset>

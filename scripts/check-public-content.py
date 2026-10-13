@@ -73,16 +73,19 @@ BLOCKED_EXTENSIONS = {
 SITE_EXTENSIONS = {
     ".html", ".css", ".js", ".mjs", ".svg", ".png", ".jpg", ".jpeg", ".webp", ".avif",
     ".gif", ".ico", ".woff2", ".woff", ".txt", ".xml", ".json", ".webmanifest",
-    ".mp4", ".webm", ".vtt", ".pdf",
+    ".mp4", ".webm", ".vtt", ".pdf", ".vcf",
 }
 
 TEXT_EXTENSIONS = {
     ".html", ".htm", ".css", ".js", ".mjs", ".json", ".webmanifest", ".svg", ".xml",
     ".txt", ".md", ".yml", ".yaml", ".toml", ".py", ".ps1", ".sh", ".cfg", ".ini",
-    ".vtt", "",
+    ".vtt", ".vcf", "",
 }
 
 MAX_FILE_BYTES = 5 * 1024 * 1024
+# Filme in site/ duerfen groesser sein (Film der Startseite in voller Qualitaet, Freigabe vom 13.10.2026).
+MAX_VIDEO_BYTES = 25 * 1024 * 1024
+VIDEO_EXTENSIONS = {".mp4", ".webm"}
 WARN_FILE_BYTES = 1 * 1024 * 1024
 
 SECRET_PATTERNS = [
@@ -412,8 +415,9 @@ def check_files(report: Report, denylist, release: bool) -> None:
         size = path.stat().st_size
         if suffix in BLOCKED_EXTENSIONS:
             report.error(rel, f"Dateityp {suffix} ist im oeffentlichen Repository nicht zulaessig")
-        if size > MAX_FILE_BYTES:
-            report.error(rel, f"Datei groesser als {MAX_FILE_BYTES // (1024 * 1024)} MB")
+        limit = MAX_VIDEO_BYTES if rel.startswith(SITE) and suffix in VIDEO_EXTENSIONS else MAX_FILE_BYTES
+        if size > limit:
+            report.error(rel, f"Datei groesser als {limit // (1024 * 1024)} MB")
         elif size > WARN_FILE_BYTES:
             report.warn(rel, "Datei groesser als 1 MB; Komprimierung pruefen")
         in_site = rel.startswith(SITE)
