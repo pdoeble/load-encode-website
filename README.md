@@ -2,25 +2,21 @@
 
 Quellcode der Website von LOAD-ENCODE, einer geplanten Forschungsinitiative zu
 domänenspezifischer künstlicher Intelligenz und zur Modellierung von
-Fahrzeugbelastungen. Die Website ist in Vorbereitung und noch nicht
-veröffentlicht.
+Fahrzeugbelastungen. Die Website ist seit dem 13.10.2026 unter
+https://load-encode.de veröffentlicht.
 
 *Source code of the website of LOAD-ENCODE, a planned research initiative on
-domain-specific AI and vehicle load modeling. The website is in preparation and
-not yet published.*
+domain-specific AI and vehicle load modeling. The website has been published at
+https://load-encode.de since 13 October 2026.*
 
 ## Stand
 
 - Das Repository ist öffentlich. Alles, was hier liegt, einschließlich der
   Git-Historie, ist veröffentlicht.
-- GitHub Pages ist abgeschaltet. Veröffentlicht wird nur über den manuell
-  gestarteten Workflow `deploy-pages.yml` nach Freigabe; siehe
-  [docs/deployment.md](docs/deployment.md).
-- Die Seiten in `site/` sind Gerüste ohne freigegebene Inhalte. Alle Seiten
-  tragen den Freigabestatus `draft`; ein Deployment ist in diesem Zustand
-  technisch gesperrt.
-- Die rechtlichen Seiten (Impressum, Datenschutz, Barrierefreiheit) sind
-  Entwürfe mit offenen Angaben.
+- Veröffentlicht wird nur über den manuell gestarteten Workflow
+  `deploy-pages.yml` nach Freigabe; siehe [docs/deployment.md](docs/deployment.md).
+- Die Seiten in `site/` sind von der Projektleitung am 13.10.2026 freigegeben
+  und tragen den Freigabestatus `released`.
 - Eine öffentliche Förderung des Vorhabens ist nicht bewilligt.
 
 ## Aufbau

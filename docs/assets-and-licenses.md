@@ -15,14 +15,19 @@ die verantwortliche Stelle.
 
 | Datei | Art | Herkunft und Urheber | Lizenz | Freigabe | Stand |
 | --- | --- | --- | --- | --- | --- |
-| `site/favicon.svg` | Symbol | eigene Arbeit des Projektteams, vorläufig | alle Rechte vorbehalten | vorläufig, ersetzt durch das spätere Logo | 2026-10-10 |
+| `site/favicon.svg`, `site/assets/images/logo/*.svg` | Logo LOAD-ENCODE-AI | Projektleitung, Farben an die Palette angepasst | alle Rechte vorbehalten | Projektleitung | 2026-10-13 |
+| `site/assets/media/film_titelseite.mp4` | Film | mit KI erzeugt (OpenArt), volle Qualität, 20 MB | nach den Bedingungen von OpenArt; Nutzung auf Verantwortung der Projektleitung | Projektleitung, mit Hinweis „Mit KI erzeugt“ | 2026-10-13 |
+| `site/assets/images/film_standbild.jpg` | Standbild aus dem Film | wie der Film | wie der Film | Projektleitung | 2026-10-13 |
+| `site/assets/images/team/philip_doebler.jpg`, `site/assets/media/philip_doebler.vcf` | Foto und Kontaktkarte | Philip Döbler | alle Rechte vorbehalten | Einwilligung der Person | 2026-10-13 |
+| `site/assets/images/bmftr.svg` | Logo des Fördergebers | Bundesministerium für Forschung, Technologie und Raumfahrt | Rechte beim Ministerium | Projektleitung; Hinweis, dass keine Förderung bewilligt ist | 2026-10-13 |
+| `site/assets/images/waage/`, `site/assets/images/g05_radar/`, `site/assets/js/g04_abhaengigkeit/` | Grafiken | eigene Arbeit des Projektteams; Daten simuliert | alle Rechte vorbehalten | Projektleitung | 2026-10-13 |
 
 ## Schriften
 
-Derzeit werden ausschließlich Systemschriften verwendet. Eine Webschrift wird
-erst nach Lizenzprüfung lokal unter `site/assets/fonts/` abgelegt und hier mit
-Lizenztext (zum Beispiel SIL Open Font License 1.1) eingetragen. Die
-Lizenzdatei liegt dann im selben Ordner.
+| Ordner | Schrift | Lizenz |
+| --- | --- | --- |
+| `site/assets/fonts/archivo/` | Archivo, Teilmenge, umbenannt in „LE Head“ | SIL Open Font License 1.1, `OFL.txt` im Ordner |
+| `site/assets/fonts/plex-sans/` | IBM Plex Sans, Teilmenge, umbenannt in „LE Text“ | SIL Open Font License 1.1, `OFL.txt` im Ordner |
 
 ## Bibliotheken
 
@@ -34,8 +39,37 @@ ausgeliefert, nicht über ein CDN.
 
 Logos Dritter werden nur mit schriftlicher Freigabe für die Website verwendet.
 Der Freigabenachweis wird intern geführt; hier stehen Datei, Rechteinhaber,
-Datum der Freigabe und Umfang der Freigabe.
+Datum der Freigabe und Umfang der Freigabe. Grundlage ist die Freigabe der
+Projektleitung vom 13.10.2026.
 
 | Datei | Rechteinhaber | Umfang der Freigabe | Datum |
 | --- | --- | --- | --- |
-| (noch keine) | | | |
+| `site/assets/images/partner/dunkel/ORG-AIRBUS.png` | Airbus Defence and Space | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-AIRROBOT.png` | AirRobot | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-AKKODIS.png` | Akkodis | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-ARX.png` | ARX Robotics | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-ASAM.png` | ASAM | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-BAAINBW.png` | BAAINBw | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-BERTRANDT.png` | Bertrandt | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-DAIMLERTRUCK-DEFENCE.png` | Daimler Truck | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-DIEHL.png` | Diehl Defence | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-EMOBILBW.png` | e-mobil BW | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-EDI.png` | EDI | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-FAU-OSS.png` | FAU, Open-Source-Professur | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-FKFS.png` | FKFS | volles Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-HELSING-GROB_helsing.png` | Helsing / Grob Aircraft | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-HELSING-GROB_grob.png` | Helsing / Grob Aircraft | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-HITACHI-RAIL.png` | Hitachi Rail | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-HSE.png` | Hochschule Esslingen | volles Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-KNDS.png` | KNDS Deutschland | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-LETSDEV.png` | let's dev | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-AMG.png` | Mercedes-AMG | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-MBAG.png` | Mercedes-Benz | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-PROSTEP.png` | prostep ivip | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-SPLEENLAB.png` | Spleenlab | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-TRACETRONIC.png` | tracetronic | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-TROUT.png` | TROUT | volles Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-TWT.png` | TWT | volles Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-IFS.png` | Universität Stuttgart, IFS | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-WODIVITY.png` | Wodivity | volles Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/hell/ORG-HSE.png` | Hochschule Esslingen | volles Logo (Fußzeile) | 2026-10-13 |

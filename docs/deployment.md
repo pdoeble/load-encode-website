@@ -6,8 +6,8 @@ Veröffentlicht wird ausschließlich der Inhalt von `site/`. Das Deployment
 startet nie automatisch, sondern nur manuell nach Abarbeitung der
 [Freigabe-Checkliste](release-checklist.md).
 
-Derzeit ist kein Deployment möglich. GitHub Pages ist abgeschaltet, und alle
-Seiten tragen den Status `draft`, an dem die Freigabeprüfung scheitert. Das
+GitHub Pages ist seit dem 13.10.2026 eingeschaltet (Quelle GitHub Actions, eigene
+Domain `load-encode.de`); die Seiten tragen den Status `released`. Das
 Repository selbst ist öffentlich: Die Beschränkung des Deployments auf `site/`
 schützt die übrigen Dateien und die Git-Historie nicht. Was im Repository
 liegt, ist veröffentlicht.
@@ -129,3 +129,8 @@ und der Workflow durch `deploy-pages.yml` ersetzt. Die ausgelieferten Dateien
 waren dieselben, die im öffentlichen Repository ohnehin lesbar sind; vertrauliche
 Inhalte enthielt das Repository nach der Prüfung mit
 `scripts/check-public-content.py --history` nicht.
+
+Am 13.10.2026 hat die Projektleitung die Website in der vorliegenden Form
+freigegeben. GitHub Pages wurde mit der Quelle „GitHub Actions“ und der eigenen
+Domain `load-encode.de` eingeschaltet; die erste Veröffentlichung läuft über
+`deploy-pages.yml`.
