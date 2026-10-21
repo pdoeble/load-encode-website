@@ -54,7 +54,7 @@ Projektleitung vom 13.10.2026, ergänzt am 21.10.2026.
 | `site/assets/images/partner/dunkel/ORG-BERTRANDT.png` | Bertrandt | unscharfe Darstellung von Logo und Name | 2026-10-13 |
 | `site/assets/images/partner/dunkel/ORG-DAIMLERTRUCK-DEFENCE.png` | Daimler Truck | unscharfe Darstellung von Logo und Name | 2026-10-13 |
 | `site/assets/images/partner/dunkel/ORG-DIEHL.png` | Diehl Defence | unscharfe Darstellung von Logo und Name | 2026-10-13 |
-| `site/assets/images/partner/dunkel/ORG-EMOBILBW.png` | e-mobil BW | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-EMOBILBW.png` | e-mobil BW | volles Logo und Name | 2026-10-21 |
 | `site/assets/images/partner/dunkel/ORG-EDI.png` | EDI | unscharfe Darstellung von Logo und Name | 2026-10-13 |
 | `site/assets/images/partner/dunkel/ORG-FAU-OSS.png` | FAU, Open-Source-Professur | unscharfe Darstellung von Logo und Name | 2026-10-13 |
 | `site/assets/images/partner/dunkel/ORG-FKFS.png` | FKFS | volles Logo und Name | 2026-10-13 |
@@ -64,15 +64,15 @@ Projektleitung vom 13.10.2026, ergänzt am 21.10.2026.
 | `site/assets/images/partner/dunkel/ORG-HSE.png` | Hochschule Esslingen | volles Logo und Name | 2026-10-13 |
 | `site/assets/images/partner/dunkel/ORG-KNDS.png` | KNDS Deutschland | unscharfe Darstellung von Logo und Name | 2026-10-13 |
 | `site/assets/images/partner/dunkel/ORG-LETSDEV.png` | let's dev | unscharfe Darstellung von Logo und Name | 2026-10-13 |
-| `site/assets/images/partner/dunkel/ORG-MHIT.png` | M-H IT Solution | unscharfe Darstellung von Logo und Name | 2026-10-21 |
+| `site/assets/images/partner/dunkel/ORG-MHIT.png` | M-H IT Solution | volles Logo und Name | 2026-10-21 |
 | `site/assets/images/partner/dunkel/ORG-AMG.png` | Mercedes-AMG | unscharfe Darstellung von Logo und Name | 2026-10-13 |
 | `site/assets/images/partner/dunkel/ORG-MBAG.png` | Mercedes-Benz | unscharfe Darstellung von Logo und Name | 2026-10-13 |
 | `site/assets/images/partner/dunkel/ORG-OKIT.png` | OKIT | volles Logo und Name | 2026-10-21 |
-| `site/assets/images/partner/dunkel/ORG-PROSTEP.png` | prostep ivip | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-PROSTEP.png` | prostep ivip | volles Logo und Name | 2026-10-21 |
 | `site/assets/images/partner/dunkel/ORG-SPLEENLAB.png` | Spleenlab | unscharfe Darstellung von Logo und Name | 2026-10-13 |
 | `site/assets/images/partner/dunkel/ORG-TRACETRONIC.png` | tracetronic | unscharfe Darstellung von Logo und Name | 2026-10-13 |
 | `site/assets/images/partner/dunkel/ORG-TROUT.png` | TROUT | volles Logo und Name | 2026-10-13 |
 | `site/assets/images/partner/dunkel/ORG-TWT.png` | TWT | volles Logo und Name | 2026-10-13 |
-| `site/assets/images/partner/dunkel/ORG-IFS.png` | Universität Stuttgart, IFS | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-IFS.png` | Universität Stuttgart, IFS | volles Logo und Name | 2026-10-21 |
 | `site/assets/images/partner/dunkel/ORG-WODIVITY.png` | Wodivity | volles Logo und Name | 2026-10-13 |
 | `site/assets/images/partner/hell/ORG-HSE.png` | Hochschule Esslingen | volles Logo (Fußzeile) | 2026-10-13 |
