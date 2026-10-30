@@ -45,7 +45,7 @@ Projektleitung vom 13.10.2026, ergänzt am 21., 22., 26. und 28.10.2026.
 | Datei | Rechteinhaber | Umfang der Freigabe | Datum |
 | --- | --- | --- | --- |
 | `site/assets/images/partner/dunkel/ORG-ARENA2036.png` | ARENA2036 | volles Logo und Name | 2026-10-21 |
-| `site/assets/images/partner/dunkel/ORG-BAAINBW.png` | BAAINBw | unscharfe Darstellung von Logo und Name | 2026-10-13 |
+| `site/assets/images/partner/dunkel/ORG-BAAINBW.png` | BAAINBw | volles Logo und Name | 2026-10-30 |
 | `site/assets/images/partner/dunkel/ORG-DAIMLERTRUCK-DEFENCE.png` | Daimler Truck | unscharfe Darstellung von Logo und Name | 2026-10-13 |
 | `site/assets/images/partner/dunkel/ORG-EMOBILBW.png` | e-mobil BW | volles Logo und Name | 2026-10-21 |
 | `site/assets/images/partner/dunkel/ORG-EDI.png` | EDI | volles Logo und Name | 2026-10-26 |
